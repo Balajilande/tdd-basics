@@ -66,6 +66,31 @@ namespace BowlingBall.Tests
             Assert.Equal(300, g.GetScore());
         }
 
-        
+        [Fact]
+        public void Test_RandomGameWithThreeStrikesAtEnd()
+        {
+            g.Roll(new int[] { 1, 3, 7, 3, 10, 1, 7, 5, 2, 5, 3, 8, 2, 8, 2, 10, 10, 10, 10 });
+            Assert.Equal(163, g.GetScore());
+        }
+
+        [Fact]
+        public void Test_RandomGameWithSpareThenStrikeAtEnd()
+        {
+            g.Roll(new int[] { 1, 3, 7, 3, 10, 1, 7, 5, 2, 5, 3, 8, 2, 8, 2, 10, 9, 1, 10 });
+            Assert.Equal(143, g.GetScore());
+        }
+
+        [Fact]
+        public void Test_RandomGameNoExtraRoll()
+        {
+            g.Roll(new int[] { 1, 3, 7, 3, 10, 1, 7, 5, 2, 5, 3, 8, 2, 8, 2, 10, 9, 0 });
+            Assert.Equal(131, g.GetScore());
+        }
+
+        [Fact]
+        public void Test_BowlingGameClass()
+        {
+            Assert.IsType<Game>(g);
+        }
     }
 }
